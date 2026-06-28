@@ -1,6 +1,12 @@
 # Personal / not for public repo
 *.pdf
 
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+!.env.test
+
 # Claude Code local state
 .claude/settings.local.json
 .claude/memory/
