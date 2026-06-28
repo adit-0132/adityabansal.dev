@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Project placeholder">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0%" stop-color="#1e1e2e" />
+			<stop offset="100%" stop-color="#313244" />
+		</linearGradient>
+	</defs>
+	<rect width="1600" height="900" fill="url(#bg)" />
+	<g transform="translate(800 450)" font-family="monospace" text-anchor="middle">
+		<text y="-20" font-size="64" fill="#cdd6f4" opacity="0.7">Project Screenshot</text>
+		<text y="40" font-size="28" fill="#a6adc8" opacity="0.5">drop yours in /static/projects/</text>
+	</g>
+</svg>

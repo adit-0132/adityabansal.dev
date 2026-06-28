@@ -1,0 +1,9 @@
+# Personal / not for public repo
+*.pdf
+
+# Claude Code local state
+.claude/settings.local.json
+.claude/memory/
+.claude/projects/
+.claude/jobs/
+.claude/worktrees/

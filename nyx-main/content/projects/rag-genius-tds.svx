@@ -1,0 +1,18 @@
+~~~
+title = "RAG-genius for TDS"
+description = "Production-grade multimodal RAG over IIT Madras TDS course pages and Discourse forums."
+date = "2025-06-01"
+published = true
+featured = true
+tags = ["Python", "FastAPI", "ChromaDB", "OpenAI CLIP", "Playwright", "BeautifulSoup"]
+
+[image]
+url = "/projects/placeholder.svg"
+alt = "RAG-genius for TDS"
+~~~
+
+A production-grade Retrieval-Augmented Generation system built with Python, FastAPI, and OpenAI CLIP for multimodal semantic search over IIT Madras TDS course pages and Discourse forum threads.
+
+- Playwright-based scraping pipeline that dynamically extracts and indexes JS-rendered content from course pages and Discourse.
+- Intelligent text chunking at logical boundaries, embedded with ChromaDB + OpenAI CLIP — improving retrieval accuracy and answer quality over baseline approaches.
+- Dual LLM API failover mechanism (OpenRouter → AI Pipe) with automatic fallback for high availability under rate limits or provider downtime.

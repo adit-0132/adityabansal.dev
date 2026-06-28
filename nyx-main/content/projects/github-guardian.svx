@@ -1,0 +1,19 @@
+~~~
+title = "GitHub Guardian"
+description = "GitHub App that scans Actions workflows for CI/CD security risks."
+date = "2025-10-01"
+published = true
+featured = false
+tags = ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker", "Bandit", "Semgrep"]
+
+[image]
+url = "/projects/placeholder.svg"
+alt = "GitHub Guardian"
+~~~
+
+A GitHub App that scans GitHub Actions workflows for CI/CD security risks and reports back through PR checks, review comments, and tracked issues.
+
+- Rule engine that detects unpinned actions, excessive permissions, and unsafe scripts.
+- Static analysis via Bandit, Semgrep, and detect-secrets for code and secret scanning.
+- Automated PR checks, review comments, and issue creation with remediation guidance.
+- Monitoring dashboard tracking findings, policies, audit logs, and scan results.

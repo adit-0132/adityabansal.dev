@@ -1,0 +1,17 @@
+~~~
+title = "Context Porter"
+description = "Chrome extension that migrates conversations between ChatGPT and Claude."
+date = "2026-02-01"
+published = true
+featured = true
+tags = ["JavaScript", "Chrome Extension", "WebRequest API"]
+
+[image]
+url = "/projects/placeholder.svg"
+alt = "Context Porter"
+~~~
+
+A Chrome extension enabling seamless conversation migration between ChatGPT and Claude — preserving context across LLM providers.
+
+- Automatic auth token interception via the WebRequest API, paired with platform-specific content scripts for data extraction.
+- Bidirectional conversion pipeline supporting conversation export, Markdown generation, and cross-platform import workflows.

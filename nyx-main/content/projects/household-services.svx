@@ -1,0 +1,17 @@
+~~~
+title = "Household Services Booking Manager"
+description = "Flask + SQLite platform for booking household services, with RBAC across Admin, Customer, and Professional roles."
+date = "2024-11-01"
+published = true
+featured = false
+tags = ["Python", "Flask", "SQLite", "Bootstrap", "Jinja"]
+
+[image]
+url = "/projects/placeholder.svg"
+alt = "Household Services Booking Manager"
+~~~
+
+A Flask/SQLite household-service platform with role-based access control for Admins, Customers, and Professionals.
+
+- Service booking workflows with professional approval, status tracking, and admin CRUD operations.
+- Responsive Bootstrap dashboards displaying bookings, user management, search, and service summaries.

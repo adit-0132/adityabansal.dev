@@ -1,0 +1,40 @@
+~~~
+title = "Project Title"
+description = "One-line summary shown in the project list and SEO meta."
+date = "2026-01-01"
+published = false
+featured = false
+tags = ["tag-one", "tag-two"]
+
+[image]
+url = "/projects/placeholder.svg"
+alt = "Project screenshot"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/your-handle/your-repo"
+icon = "github"
+
+[[links]]
+text = "Live Demo"
+url = "https://example.com"
+icon = "external"
+~~~
+# Project Title
+
+Copy this file to `content/projects/<your-slug>.svx`, fill in the frontmatter, and write the body in Markdown.
+
+Set `published = true` to include the project on `/projects`. Set `featured = true` to surface it on the home page (up to 2 featured projects render in the hero bento).
+
+## Sections
+
+Use standard Markdown headings, lists, code fences, and links. Frontmatter fields:
+
+- `title` — display name
+- `description` — short summary
+- `date` — YYYY-MM-DD; controls sort order on `/projects`
+- `published` — gate visibility (drafts only show in dev)
+- `featured` — surface on the home page
+- `tags` — chips rendered on the project card
+- `image` — card thumbnail (drop file in `static/projects/`)
+- `links` — repeated table of related links; `icon` accepts `github`, `external`, `docs`, `code`, or `devpost`
