@@ -144,6 +144,7 @@ export const site = {
 		main: [
 			{ title: 'About', href: '/about' },
 			{ title: 'Projects', href: '/projects' },
+			{ title: 'GSoC', href: '/gsoc' },
 			{ title: 'Pics', href: '/pics' }
 		] as NavItem[],
 		more: [
