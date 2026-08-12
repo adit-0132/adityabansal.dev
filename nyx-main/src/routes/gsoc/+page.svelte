@@ -196,6 +196,32 @@
 		usable for people who&rsquo;d rather read the manual in their own language.
 	</p>
 
+	<h2>The pull requests</h2>
+
+	<ul class="sources">
+		<li>
+			<a
+				href="https://github.com/eliocamp/rhelpi18n/pull/35"
+				target="_blank"
+				rel="noopener noreferrer">#35</a
+			> · the read-time runtime — filling placeholders back in
+		</li>
+		<li>
+			<a
+				href="https://github.com/eliocamp/rhelpi18n/pull/36"
+				target="_blank"
+				rel="noopener noreferrer">#36</a
+			> · the authoring tool — generating a translation skeleton
+		</li>
+		<li>
+			<a
+				href="https://github.com/eliocamp/rhelpi18n/pull/37"
+				target="_blank"
+				rel="noopener noreferrer">#37</a
+			> · a clearer package name
+		</li>
+	</ul>
+
 	<h2>Sources</h2>
 
 	<ul class="sources">
