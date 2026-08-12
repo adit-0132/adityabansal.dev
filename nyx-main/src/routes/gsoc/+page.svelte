@@ -36,7 +36,7 @@
 	<p>It sounds like a translation task. It mostly wasn&rsquo;t.</p>
 
 	<p>
-		Worth saying up front: I didn&rsquo;t start from nothing. The package I built on,
+		I didn&rsquo;t start from nothing. The package I built on,
 		<a href="https://github.com/eliocamp/rhelpi18n" target="_blank" rel="noopener noreferrer"
 			>rhelpi18n</a
 		>, already existed and already did the core trick — notice your language, find a
@@ -184,9 +184,10 @@
 
 	<p>
 		The first time <code>?greet</code> came back translated, with the version number still
-		correct underneath, I grinned at my screen. But the feature isn&rsquo;t what stuck.
+		correct underneath, It felt like a big W. But the feature isn&rsquo;t what stuck.
 		It&rsquo;s the shape of the work: a vague, hard problem handed to me inside an unfamiliar
-		system, slowly turned into something a maintainer wanted to merge.
+		system, slowly turned into something that could be integrated into a much bigger ecosytem
+		and workflow that thousands of R-users employ from all across the world.
 	</p>
 
 	<p>
