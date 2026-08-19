@@ -119,7 +119,7 @@
 			helped.
 		</li>
 		<li>
-			<span class="wk">Weeks 7–8 · Cleanup and packaging</span>
+			<span class="wk">Week 7 · Cleanup and packaging</span>
 			I worked through the fixes one at a time: using R&rsquo;s built-in helpers instead of my
 			own, rejecting locale codes that make invalid package names, returning the original text
 			on a miss instead of an error that every caller had to handle. Then I split the work into
@@ -130,7 +130,7 @@
 			slightly wrong serves zero packages and hands you no error to explain why.
 		</li>
 		<li>
-			<span class="wk">Weeks 9–10 · The ugly edges</span>
+			<span class="wk">Week 8 · The ugly edges</span>
 			This was the run of small, fiddly problems that decide whether a tool is actually
 			pleasant to use. A translator who needs a literal <code>&#123;ISEXPR_0&#125;</code> now
 			writes <code>&#123;&#123;ISEXPR_0&#125;&#125;</code>, which I tuck behind a sentinel while
@@ -141,7 +141,7 @@
 			test suite, because it honestly had none.
 		</li>
 		<li>
-			<span class="wk">Weeks 11–12 · Tooling and a rename</span>
+			<span class="wk">Weeks 9–10 · Tooling and a rename</span>
 			The final stretch was about making the whole thing comfortable to actually use. I built
 			the generator that takes a local package, installs it into a temporary library to see its
 			baked help, diffs the two, and writes out a ready-to-fill translation folder: one file
@@ -150,6 +150,23 @@
 			clearer name. Most of the last days went to a long, blunt review that I walked top to
 			bottom, from one-word wording fixes up to &ldquo;should this option exist at all?&rdquo;
 			The read-time half is merged now; the rest is in review.
+		</li>
+		<li>
+			<span class="wk">Weeks 11–12 · Closing the list</span>
+			My mentor came back with one long review — the good kind, that reads the whole
+			thing and asks hard questions. I walked it top to bottom over the final stretch:
+			trimming the docs down to what a translator actually needs, swapping my hand-rolled
+			checks for R&rsquo;s built-in ones, and dropping an option that was more footgun than
+			feature — replacing it with code that, when it can&rsquo;t do the clever thing, falls
+			back gracefully and says so instead of failing in silence. The biggest new piece
+			answered a question we had kept circling: what happens to a translation when the
+			original text changes underneath it? Borrowing an idea from gettext, the tool now
+			keeps your old translation, flags it as maybe-stale, and shows the reader a small
+			&ldquo;this might be out of date&rdquo; note that opens onto the current original —
+			so a changed sentence degrades politely instead of lying. Wiring that up surfaced a
+			bug I&rsquo;d walked past for weeks: translations were being quietly stripped down on
+			install, so I moved them to where R actually keeps such files. The package passes its
+			checks clean now, and every review thread is resolved.
 		</li>
 	</ol>
 
