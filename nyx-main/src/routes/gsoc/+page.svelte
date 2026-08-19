@@ -153,20 +153,26 @@
 		</li>
 		<li>
 			<span class="wk">Weeks 11–12 · Closing the list</span>
-			My mentor came back with one long review — the good kind, that reads the whole
-			thing and asks hard questions. I walked it top to bottom over the final stretch:
-			trimming the docs down to what a translator actually needs, swapping my hand-rolled
-			checks for R&rsquo;s built-in ones, and dropping an option that was more footgun than
-			feature — replacing it with code that, when it can&rsquo;t do the clever thing, falls
-			back gracefully and says so instead of failing in silence. The biggest new piece
-			answered a question we had kept circling: what happens to a translation when the
-			original text changes underneath it? Borrowing an idea from gettext, the tool now
-			keeps your old translation, flags it as maybe-stale, and shows the reader a small
-			&ldquo;this might be out of date&rdquo; note that opens onto the current original —
-			so a changed sentence degrades politely instead of lying. Wiring that up surfaced a
-			bug I&rsquo;d walked past for weeks: translations were being quietly stripped down on
-			install, so I moved them to where R actually keeps such files. The package passes its
-			checks clean now, and every review thread is resolved.
+			My mentor&rsquo;s review was long, going line by line through the code and the docs.
+			Most of it I just worked through: cutting the guides back to what a translator
+			actually needs instead of explaining the internals, using R&rsquo;s own helper
+			functions where I&rsquo;d written my own, and pulling out an option that only ever
+			made a weaker template. In its place, when the tool can&rsquo;t build the proper
+			template for a page, it now writes a plain one and tells you which pages to
+			double-check, rather than skipping them without a word. The bigger piece was what
+			happens when a package updates and its help text changes after someone has already
+			translated it. I wrote a function that regenerates the templates and carries the old
+			translations over. Anything unchanged keeps its translation; anything that changed
+			keeps the old one but gets marked stale, with the previous text shown alongside so
+			the translator edits instead of starting from scratch. It&rsquo;s the same idea as
+			gettext&rsquo;s &ldquo;fuzzy&rdquo; entries. Until it&rsquo;s fixed, the reader still
+			sees the old translation, with a small note that it may be out of date and a link to
+			the current text. Getting that working turned up a bug that had been there all along:
+			on install the translation files were being trimmed down to just the original and its
+			translation, dropping the extra fields, so the stale flag never actually reached the
+			reader. Moving them into <code>inst/</code>, where R keeps data that survives
+			installation, fixed it. After that the package checks clean, and every review comment
+			is closed.
 		</li>
 	</ol>
 
