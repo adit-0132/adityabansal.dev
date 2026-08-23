@@ -13,3 +13,6 @@
 .claude/projects/
 .claude/jobs/
 .claude/worktrees/
+
+# allow the GSoC proposal on the site
+!nyx-main/static/gsoc-proposal.pdf

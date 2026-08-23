@@ -17,6 +17,10 @@
 			Google Summer of Code 2026 · R Project for Statistical Computing · 350 hours
 			<br />
 			Mentors: Heather Turner &amp; Elio Campitelli
+			<br />
+			<a href="/gsoc-proposal.pdf" target="_blank" rel="noopener noreferrer"
+				>Read the original proposal (PDF)</a
+			>
 		</p>
 	</header>
 
