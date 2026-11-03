@@ -1,17 +1,28 @@
 ~~~
 title = "Context Porter"
-description = "Chrome extension that migrates conversations between ChatGPT and Claude."
+description = "Chrome extension that moves AI conversations between ChatGPT, Claude, Gemini and Grok: export, compress on your device, and continue on any model."
 date = "2026-02-01"
 published = true
 featured = true
 tags = ["JavaScript", "Chrome Extension", "WebRequest API"]
 
 [image]
-url = "/projects/placeholder.svg"
-alt = "Context Porter"
+url = "/projects/context-porter-media/cover.jpg"
+alt = "Context Porter: don't start your chat over"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/context-porter"
+icon = "github"
+
+[[links]]
+text = "Chrome Web Store"
+url = "https://chromewebstore.google.com/detail/eeijogjkipjihfdkapijankhflinbdlm"
+icon = "external"
 ~~~
 
-A Chrome extension enabling seamless conversation migration between ChatGPT and Claude — preserving context across LLM providers.
+<script>
+	import ContextPorterPage from '$content/projects/context-porter/ContextPorterPage.svelte';
+</script>
 
-- Automatic auth token interception via the WebRequest API, paired with platform-specific content scripts for data extraction.
-- Bidirectional conversion pipeline supporting conversation export, Markdown generation, and cross-platform import workflows.
+<ContextPorterPage />
