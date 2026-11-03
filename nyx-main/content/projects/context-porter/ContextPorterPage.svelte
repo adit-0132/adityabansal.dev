@@ -9,6 +9,11 @@
 	const PRIVACY_URL = 'https://github.com/adit-0132/context-porter/blob/main/PRIVACY.md';
 	const ISSUES_URL = 'https://github.com/adit-0132/context-porter/issues';
 	const IMG = '/projects/context-porter-media';
+	const VIDEO_ID = '5cPNLgoAMqg';
+	const VIDEO_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
+
+	// Click-to-play: show our own poster and contact YouTube only when the visitor presses play.
+	let playing = $state(false);
 
 	const steps = [
 		{
@@ -157,14 +162,34 @@
 			</div>
 			<p class="meta">No account · No server · No tracking</p>
 		</div>
-		<figure class="shot shot-hero">
-			<img
-				src="{IMG}/shot-1.webp"
-				alt="The Context Porter popup open over a long claude.ai conversation"
-				width="1280"
-				height="800"
-				fetchpriority="high"
-			/>
+		<figure class="video">
+			{#if playing}
+				<iframe
+					src="https://www.youtube-nocookie.com/embed/{VIDEO_ID}?autoplay=1&rel=0&playsinline=1"
+					title="Context Porter: take control of your context (demo video)"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen
+				></iframe>
+			{:else}
+				<a
+					class="video-facade"
+					href={VIDEO_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Play the Context Porter demo video"
+					onclick={(e) => {
+						e.preventDefault();
+						playing = true;
+					}}
+				>
+					<img src="{IMG}/cover.jpg" alt="" width="1600" height="900" fetchpriority="high" />
+					<span class="play" aria-hidden="true">
+						<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" /></svg>
+					</span>
+					<span class="video-time" aria-hidden="true">▶ 0:42 demo</span>
+				</a>
+			{/if}
 		</figure>
 	</section>
 
@@ -177,6 +202,27 @@
 			conversation by hand is slow and messy. Context Porter reads the chat through the site you are
 			already signed in to and hands you a clean, portable copy you can take anywhere.
 		</p>
+	</section>
+
+	<!-- In the toolbar -->
+	<section class="inline-shot" aria-labelledby="toolbar">
+		<div class="inline-copy">
+			<h2 id="toolbar">Right where you chat</h2>
+			<p>
+				Click the toolbar icon on ChatGPT, Claude, Gemini or Grok. The popup knows which site you
+				are on and exports the conversation that is open, using the session you are already signed
+				in with.
+			</p>
+		</div>
+		<figure class="shot">
+			<img
+				src="{IMG}/shot-1.webp"
+				alt="The Context Porter popup open over a long claude.ai conversation"
+				width="1280"
+				height="800"
+				loading="lazy"
+			/>
+		</figure>
 	</section>
 
 	<!-- How it works -->
@@ -523,6 +569,87 @@
 		display: block;
 		width: 100%;
 		height: auto;
+	}
+
+	/* Hero video (click-to-play) */
+	.video {
+		position: relative;
+		margin: 0;
+		aspect-ratio: 16 / 9;
+		border-radius: 16px;
+		overflow: hidden;
+		border: 1px solid var(--color-surface1);
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+		background: #000;
+	}
+	.video iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+	.video-facade {
+		position: absolute;
+		inset: 0;
+		display: block;
+		cursor: pointer;
+	}
+	.video-facade img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.play {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 88px;
+		height: 88px;
+		margin: -44px 0 0 -44px;
+		border-radius: 50%;
+		background: var(--ink);
+		display: grid;
+		place-items: center;
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+		transition: transform 0.15s ease;
+	}
+	.play svg {
+		width: 38px;
+		height: 38px;
+		margin-left: 4px;
+		fill: var(--signal);
+	}
+	.video-facade:hover .play {
+		transform: scale(1.07);
+	}
+	.video-facade:focus-visible {
+		outline: 3px solid var(--signal);
+		outline-offset: -3px;
+	}
+	.video-time {
+		position: absolute;
+		right: 14px;
+		bottom: 14px;
+		padding: 0.45rem 0.65rem;
+		border-radius: 8px;
+		background: rgba(14, 16, 19, 0.85);
+		color: var(--paper);
+		font:
+			600 0.8rem/1 'Geist Mono',
+			ui-monospace,
+			monospace;
+	}
+
+	/* Toolbar section */
+	.inline-copy {
+		max-width: 46rem;
+		margin-bottom: 2rem;
+	}
+	.inline-copy p {
+		margin-top: 1rem;
+		color: var(--color-subtext1);
 	}
 
 	/* Problem */
