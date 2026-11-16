@@ -1,0 +1,28 @@
+~~~
+title = "Rockscreen"
+description = "Android app that puts synced lyrics on your lock screen for whatever is playing. Free and open source (GPL-3.0), no account, no ads, no tracking."
+date = "2026-11-06"
+published = true
+featured = false
+tags = ["Kotlin", "Android", "Jetpack Compose"]
+
+[image]
+url = "/projects/rockscreen-media/cover.jpg"
+alt = "Rockscreen: synced lyrics on your lock screen, for whatever is playing"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/rockscreen"
+icon = "github"
+
+[[links]]
+text = "Download"
+url = "https://github.com/adit-0132/rockscreen/releases/latest"
+icon = "external"
+~~~
+
+<script>
+	import RockscreenPage from '$content/projects/rockscreen/RockscreenPage.svelte';
+</script>
+
+<RockscreenPage />
