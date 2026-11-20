@@ -72,52 +72,11 @@
 		}
 	];
 
-	type Status = 'yes' | 'untested' | 'no';
-	const support: { setup: string; status: Status; label: string; note?: string }[] = [
-		{
-			setup: 'Spotify on a vivo phone, Android 15',
-			status: 'yes',
-			label: 'Tested on a real phone'
-		},
-		{
-			setup: 'Samsung, Pixel and OnePlus phones',
-			status: 'yes',
-			label: 'Tested on real phones'
-		},
-		{
-			setup: 'Android 16 emulator with a test music player',
-			status: 'yes',
-			label: 'Tested'
-		},
-		{
-			setup: 'Other music apps with playback controls in notifications',
-			status: 'untested',
-			label: 'Should work, not tested yet',
-			note: 'YouTube Music included.'
-		},
-		{
-			setup: 'Xiaomi and other phones',
-			status: 'untested',
-			label: 'Not tested yet',
-			note: 'If your phone blocks full-screen notifications, turn on "Display over other apps".'
-		},
-		{
-			setup: 'Android 8.1 to 14',
-			status: 'untested',
-			label: 'Supported, not tested yet'
-		},
-		{
-			setup: 'Phones that unlock the instant you wake them',
-			status: 'no',
-			label: 'Not on a normal wake',
-			note: 'For example a fingerprint sensor in the power button. Leave the phone on a desk or stand, or wake it another way.'
-		},
-		{
-			setup: 'Lock screen set to "None"',
-			status: 'no',
-			label: "Doesn't work",
-			note: 'Rockscreen needs a lock screen to appear on: swipe, pattern, PIN or password.'
-		}
+	const support: { setup: string; label: string }[] = [
+		{ setup: 'Spotify on a vivo phone, Android 15', label: 'Tested on a real phone' },
+		{ setup: 'Samsung, Pixel and OnePlus phones', label: 'Tested on real phones' },
+		{ setup: 'YouTube Music', label: 'Tested' },
+		{ setup: 'Android 16 emulator with a test music player', label: 'Tested' }
 	];
 
 	const permissions = [
@@ -275,7 +234,10 @@
 	<!-- Where it works -->
 	<section class="support" aria-labelledby="support">
 		<h2 id="support">Where it works</h2>
-		<p class="section-lede">What has been tested so far, and where it won't show up.</p>
+		<p class="section-lede">
+			Android 8.1 or newer, with any app that shows playback controls in its notification. Here is
+			what it has been tested on.
+		</p>
 		<div class="table-wrap">
 			<table>
 				<thead>
@@ -286,8 +248,7 @@
 						<tr>
 							<th scope="row">{s.setup}</th>
 							<td>
-								<span class="status {s.status}">{s.label}</span>
-								{#if s.note}<span class="note">{s.note}</span>{/if}
+								<span class="status">{s.label}</span>
 							</td>
 						</tr>
 					{/each}
@@ -770,25 +731,7 @@
 		height: 0.6rem;
 		border-radius: 50%;
 		flex: none;
-	}
-	.status.yes::before {
 		background: var(--neon);
-	}
-	.status.untested::before {
-		background: transparent;
-		box-shadow: inset 0 0 0 2px var(--color-overlay1);
-	}
-	.status.no::before {
-		background: var(--color-overlay0);
-	}
-	.status.no {
-		color: var(--color-subtext0);
-	}
-	.note {
-		display: block;
-		margin-top: 0.25rem;
-		font-size: 0.88rem;
-		color: var(--color-subtext0);
 	}
 
 	/* Privacy */
