@@ -1,7 +1,7 @@
 ~~~
 title = "Shelf Studio"
 description = "Local app that turns rough phone photos of a product into catalog photos and marketplace listing copy, through the image generation in your Codex CLI sign-in. Built to keep the real object's detail. Open source (GPL-3.0)."
-date = "2026-11-05"
+date = "2026-09-15"
 published = true
 featured = false
 tags = ["Node.js", "Codex CLI", "Image generation"]
