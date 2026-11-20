@@ -1,7 +1,7 @@
 ~~~
 title = "Rockscreen"
 description = "Android app that puts synced lyrics on your lock screen for whatever is playing. Free and open source (GPL-3.0), no account, no ads, no tracking."
-date = "2026-11-06"
+date = "2026-06-24"
 published = true
 featured = false
 tags = ["Kotlin", "Android", "Jetpack Compose"]
