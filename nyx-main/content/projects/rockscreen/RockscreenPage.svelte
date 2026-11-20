@@ -80,6 +80,11 @@
 			label: 'Tested on a real phone'
 		},
 		{
+			setup: 'Samsung, Pixel and OnePlus phones',
+			status: 'yes',
+			label: 'Tested on real phones'
+		},
+		{
 			setup: 'Android 16 emulator with a test music player',
 			status: 'yes',
 			label: 'Tested'
@@ -91,7 +96,7 @@
 			note: 'YouTube Music included.'
 		},
 		{
-			setup: 'Pixel, Samsung, Xiaomi, OnePlus and other phones',
+			setup: 'Xiaomi and other phones',
 			status: 'untested',
 			label: 'Not tested yet',
 			note: 'If your phone blocks full-screen notifications, turn on "Display over other apps".'
@@ -161,7 +166,7 @@
 		},
 		{
 			q: 'Who made it?',
-			a: 'Aditya Bansal, with substantial help from an AI coding assistant (Claude). It was tested on a real phone and the Android emulator, and all of the source is on GitHub.'
+			a: 'Aditya Bansal, with substantial help from an AI coding assistant (Claude). It was tested on real phones (vivo, Samsung, Pixel and OnePlus) and the Android emulator, and all of the source is on GitHub.'
 		}
 	];
 </script>
