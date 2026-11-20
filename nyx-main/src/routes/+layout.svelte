@@ -11,11 +11,23 @@
 	import BackgroundEffect from '$components/BackgroundEffect.svelte';
 	import { BackgroundEnabled } from '$lib/stores/theme';
 	import { initCodeBlocks } from '$lib/client/codeblocks';
+	import type { ProjectMetadata } from '$types/projects';
 
 	const { children } = $props();
 
 	let title = $derived(
 		[Site.name, ...page.url.pathname.split('/').slice(1)].filter(Boolean).join(' - ')
+	);
+
+	// Link previews: a project page shares its own title, description and cover; other pages
+	// use the site defaults. Each tag is written once, since most scrapers take the first one.
+	const project = $derived(page.data.metadata as ProjectMetadata | undefined);
+	const shareTitle = $derived(project?.title ?? title);
+	const shareDescription = $derived(project?.description ?? Site.description);
+	const shareImage = $derived(
+		project?.image && !project.image.url.endsWith('.svg') // previews can't show SVG
+			? new URL(project.image.url, Site.url).href
+			: `${Site.url}/og-image.png`
 	);
 
 	let isSidebarOpen = $state(false);
@@ -44,19 +56,19 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content={Site.description} />
+	<meta name="description" content={shareDescription} />
 
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={Site.description} />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={Site.url} />
-	<meta property="og:image" content={`${Site.url}/og-image.png`} />
+	<meta property="og:title" content={shareTitle} />
+	<meta property="og:description" content={shareDescription} />
+	<meta property="og:type" content={project ? 'article' : 'website'} />
+	<meta property="og:url" content={Site.url + page.url.pathname} />
+	<meta property="og:image" content={shareImage} />
 	<meta property="og:site_name" content={Site.name} />
 
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={Site.description} />
-	<meta name="twitter:image" content={`${Site.url}/og-image.png`} />
+	<meta name="twitter:title" content={shareTitle} />
+	<meta name="twitter:description" content={shareDescription} />
+	<meta name="twitter:image" content={shareImage} />
 
 	<meta name="author" content={Site.seo.author} />
 	<meta name="keywords" content={Site.tags.join(', ')} />
