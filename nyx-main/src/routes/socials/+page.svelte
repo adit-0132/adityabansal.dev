@@ -8,10 +8,7 @@
 
 <svelte:head>
 	<title>Connect with {site.identity.name} | Social Links</title>
-	<meta
-		name="description"
-		content={`Connect with ${site.identity.name} across the web.`}
-	/>
+	<meta name="description" content={`Connect with ${site.identity.name} across the web.`} />
 </svelte:head>
 
 <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 md:py-12">

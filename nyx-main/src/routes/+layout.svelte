@@ -19,8 +19,8 @@
 		[Site.name, ...page.url.pathname.split('/').slice(1)].filter(Boolean).join(' - ')
 	);
 
-	// Link previews: a project page shares its own title, description and cover; other pages
-	// use the site defaults. Each tag is written once, since most scrapers take the first one.
+	// Link previews: a page whose load returns `metadata` (project pages, the grant page) shares its own
+	// title, description and cover; other pages use the site defaults. Each tag is written once, since most scrapers take the first one.
 	const project = $derived(page.data.metadata as ProjectMetadata | undefined);
 	const shareTitle = $derived(project?.title ?? title);
 	const shareDescription = $derived(project?.description ?? Site.description);
@@ -29,6 +29,49 @@
 			? new URL(project.image.url, Site.url).href
 			: `${Site.url}/og-image.png`
 	);
+
+	// Structured data for search engines. The closing tag is split so it doesn't end this <script> block.
+	const jsonLd =
+		`<script type="application/ld+json">${JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': ['Person', 'ProfilePage'],
+			name: Site.seo.author,
+			givenName: site.identity.givenName,
+			familyName: site.identity.familyName,
+			alternateName: site.identity.alternateNames,
+			url: Site.url,
+			description: Site.description,
+			jobTitle: site.identity.jobTitle,
+			birthDate: Site.seo.birthDate,
+			worksFor: Site.seo.worksFor.name
+				? {
+						'@type': 'Organization',
+						name: Site.seo.worksFor.name,
+						url: Site.seo.worksFor.url
+					}
+				: undefined,
+			address: Site.seo.location.city
+				? {
+						'@type': 'PostalAddress',
+						addressLocality: Site.seo.location.city,
+						addressRegion: Site.seo.location.region,
+						addressCountry: Site.seo.location.country
+					}
+				: undefined,
+			sameAs: [
+				Site.out.github,
+				Site.out.linkedin,
+				Site.out.instagram,
+				Site.out.bluesky,
+				Site.out.wakatime
+			].filter(Boolean),
+			knowsAbout: site.identity.seo.knowsAbout,
+			mainEntity: {
+				'@type': 'Person',
+				name: Site.seo.author
+			},
+			identifier: Site.url
+		})}</` + 'script>';
 
 	let isSidebarOpen = $state(false);
 	function toggleSidebar() {
@@ -81,48 +124,8 @@
 	{/if}
 	<link rel="canonical" href={Site.url + page.url.pathname} />
 
-	{@html `<script type="application/ld+json">
-		${JSON.stringify({
-			'@context': 'https://schema.org',
-			'@type': ['Person', 'ProfilePage'],
-			name: Site.seo.author,
-			givenName: site.identity.givenName,
-			familyName: site.identity.familyName,
-			alternateName: site.identity.alternateNames,
-			url: Site.url,
-			description: Site.description,
-			jobTitle: site.identity.jobTitle,
-			birthDate: Site.seo.birthDate,
-			worksFor: Site.seo.worksFor.name
-				? {
-						'@type': 'Organization',
-						name: Site.seo.worksFor.name,
-						url: Site.seo.worksFor.url
-					}
-				: undefined,
-			address: Site.seo.location.city
-				? {
-						'@type': 'PostalAddress',
-						addressLocality: Site.seo.location.city,
-						addressRegion: Site.seo.location.region,
-						addressCountry: Site.seo.location.country
-					}
-				: undefined,
-			sameAs: [
-				Site.out.github,
-				Site.out.linkedin,
-				Site.out.instagram,
-				Site.out.bluesky,
-				Site.out.wakatime
-			].filter(Boolean),
-			knowsAbout: site.identity.seo.knowsAbout,
-			mainEntity: {
-				'@type': 'Person',
-				name: Site.seo.author
-			},
-			identifier: Site.url
-		})}
-	</script>`}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- built from our own config above, not user input -->
+	{@html jsonLd}
 </svelte:head>
 
 <div class="text-text mx-auto flex min-h-screen max-w-[90%] flex-col md:max-w-[80%]">

@@ -177,8 +177,8 @@ export type SiteConfig = typeof site;
 		<div>
 			<h1 class="text-3xl font-bold">Admin</h1>
 			<p class="text-subtext0 mt-1 text-sm">
-				Dev-only editor for <code class="text-accent">src/lib/config/site.ts</code>. Drafts
-				autosave to localStorage. Export when ready.
+				Dev-only editor for <code class="text-accent">src/lib/config/site.ts</code>. Drafts autosave
+				to localStorage. Export when ready.
 			</p>
 		</div>
 		<div class="flex flex-wrap items-center gap-2">
@@ -192,7 +192,7 @@ export type SiteConfig = typeof site;
 			</button>
 			<button
 				onclick={download}
-				class="bg-accent/80 hover:bg-accent text-base inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors"
+				class="bg-accent/80 hover:bg-accent inline-flex items-center gap-2 rounded-md px-3 py-2 text-base text-sm font-medium transition-colors"
 			>
 				<IconDownload size={16} />Download site.ts
 			</button>
@@ -295,11 +295,7 @@ export type SiteConfig = typeof site;
 								</label>
 								<label class="block">
 									<span class="text-subtext0 mb-1 block text-xs">Birth date (YYYY-MM-DD)</span>
-									<input
-										type="text"
-										bind:value={data.identity.seo.birthDate}
-										class="admin-input"
-									/>
+									<input type="text" bind:value={data.identity.seo.birthDate} class="admin-input" />
 								</label>
 							</div>
 						{:else if section.id === 'hero'}
@@ -309,10 +305,7 @@ export type SiteConfig = typeof site;
 							</label>
 							<label class="block">
 								<span class="text-subtext0 mb-1 block text-xs">Bio (shows on landing page)</span>
-								<textarea
-									bind:value={data.hero.bio}
-									class="admin-input min-h-[6rem]"
-									rows="4"
+								<textarea bind:value={data.hero.bio} class="admin-input min-h-[6rem]" rows="4"
 								></textarea>
 							</label>
 							<label class="block">
@@ -323,8 +316,7 @@ export type SiteConfig = typeof site;
 									type="text"
 									value={data.hero.easterEggParens ?? ''}
 									oninput={(e) =>
-										(data.hero.easterEggParens =
-											(e.target as HTMLInputElement).value || null)}
+										(data.hero.easterEggParens = (e.target as HTMLInputElement).value || null)}
 									class="admin-input"
 								/>
 							</label>
@@ -348,10 +340,7 @@ export type SiteConfig = typeof site;
 								</label>
 								<label class="col-span-2 block">
 									<span class="text-subtext0 mb-1 block text-xs">Intro</span>
-									<textarea
-										bind:value={data.about.intro}
-										class="admin-input min-h-[4rem]"
-										rows="2"
+									<textarea bind:value={data.about.intro} class="admin-input min-h-[4rem]" rows="2"
 									></textarea>
 								</label>
 							</div>
@@ -404,9 +393,8 @@ export type SiteConfig = typeof site;
 								<div class="mb-2 flex items-center justify-between">
 									<span class="text-subtext0 text-xs">Pet block (optional)</span>
 									{#if data.about.pet}
-										<button
-											onclick={removePet}
-											class="text-subtext0 hover:text-red text-xs">Remove pet</button
+										<button onclick={removePet} class="text-subtext0 hover:text-red text-xs"
+											>Remove pet</button
 										>
 									{:else}
 										<button onclick={ensurePet} class="text-accent text-xs">+ Add pet</button>
@@ -416,19 +404,11 @@ export type SiteConfig = typeof site;
 									<div class="grid grid-cols-2 gap-3">
 										<label class="block">
 											<span class="text-subtext0 mb-1 block text-xs">Pet name (for anchor)</span>
-											<input
-												type="text"
-												bind:value={data.about.pet.name}
-												class="admin-input"
-											/>
+											<input type="text" bind:value={data.about.pet.name} class="admin-input" />
 										</label>
 										<label class="block">
 											<span class="text-subtext0 mb-1 block text-xs">Heading</span>
-											<input
-												type="text"
-												bind:value={data.about.pet.heading}
-												class="admin-input"
-											/>
+											<input type="text" bind:value={data.about.pet.heading} class="admin-input" />
 										</label>
 									</div>
 									<div class="mt-2 space-y-2">
@@ -478,10 +458,7 @@ export type SiteConfig = typeof site;
 							</label>
 							<label class="block">
 								<span class="text-subtext0 mb-1 block text-xs">Description</span>
-								<textarea
-									bind:value={data.pics.description}
-									class="admin-input"
-									rows="2"
+								<textarea bind:value={data.pics.description} class="admin-input" rows="2"
 								></textarea>
 							</label>
 						{:else if section.id === 'socials'}
@@ -500,9 +477,7 @@ export type SiteConfig = typeof site;
 							</div>
 						{:else if section.id === 'experience'}
 							<div class="mb-2 flex items-center justify-between">
-								<span class="text-subtext0 text-xs"
-									>{data.experience.length} entries</span
-								>
+								<span class="text-subtext0 text-xs">{data.experience.length} entries</span>
 								<button
 									onclick={addExperience}
 									class="text-accent inline-flex items-center gap-1 text-xs"
@@ -542,11 +517,7 @@ export type SiteConfig = typeof site;
 											</label>
 											<label class="col-span-2 block">
 												<span class="text-subtext0 mb-1 block text-xs">Company URL</span>
-												<input
-													type="url"
-													bind:value={data.experience[i].url}
-													class="admin-input"
-												/>
+												<input type="url" bind:value={data.experience[i].url} class="admin-input" />
 											</label>
 											<label class="block">
 												<span class="text-subtext0 mb-1 block text-xs">Logo URL</span>
@@ -565,8 +536,7 @@ export type SiteConfig = typeof site;
 												/>
 											</label>
 											<label class="block">
-												<span class="text-subtext0 mb-1 block text-xs"
-													>Start date (YYYY-MM-DD)</span
+												<span class="text-subtext0 mb-1 block text-xs">Start date (YYYY-MM-DD)</span
 												>
 												<input
 													type="text"
@@ -616,9 +586,7 @@ export type SiteConfig = typeof site;
 									</div>
 									<div class="space-y-2">
 										{#each data.nav[tKey] as _, i (i)}
-											<div
-												class="grid grid-cols-[1fr_1.5fr_auto_auto] items-center gap-2"
-											>
+											<div class="grid grid-cols-[1fr_1.5fr_auto_auto] items-center gap-2">
 												<input
 													type="text"
 													bind:value={data.nav[tKey][i].title}
@@ -636,9 +604,7 @@ export type SiteConfig = typeof site;
 														type="checkbox"
 														checked={data.nav[tKey][i].external ?? false}
 														onchange={(e) =>
-															(data.nav[tKey][i].external = (
-																e.target as HTMLInputElement
-															).checked)}
+															(data.nav[tKey][i].external = (e.target as HTMLInputElement).checked)}
 													/>
 													ext
 												</label>
@@ -658,11 +624,7 @@ export type SiteConfig = typeof site;
 							<div class="grid grid-cols-2 gap-3">
 								<label class="col-span-2 block">
 									<span class="text-subtext0 mb-1 block text-xs">Copyright name</span>
-									<input
-										type="text"
-										bind:value={data.brand.copyrightName}
-										class="admin-input"
-									/>
+									<input type="text" bind:value={data.brand.copyrightName} class="admin-input" />
 								</label>
 								<label class="col-span-2 block">
 									<span class="text-subtext0 mb-1 block text-xs">Repo URL</span>
@@ -670,19 +632,11 @@ export type SiteConfig = typeof site;
 								</label>
 								<label class="col-span-2 block">
 									<span class="text-subtext0 mb-1 block text-xs">Commit base URL</span>
-									<input
-										type="url"
-										bind:value={data.brand.commitBaseUrl}
-										class="admin-input"
-									/>
+									<input type="url" bind:value={data.brand.commitBaseUrl} class="admin-input" />
 								</label>
 								<label class="col-span-2 block">
 									<span class="text-subtext0 mb-1 block text-xs">Contact email</span>
-									<input
-										type="email"
-										bind:value={data.brand.contactEmail}
-										class="admin-input"
-									/>
+									<input type="email" bind:value={data.brand.contactEmail} class="admin-input" />
 								</label>
 								<label class="col-span-2 flex items-center gap-2 text-sm">
 									<input type="checkbox" bind:checked={data.brand.analytics.enabled} />

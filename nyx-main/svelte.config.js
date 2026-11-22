@@ -93,7 +93,10 @@ const mdsvexOptions = {
 					transformers: [transformerColorizedBrackets()]
 				});
 			} catch (error) {
-				console.warn(`Failed to highlight language "${highlightLang}". Falling back to text.`, error);
+				console.warn(
+					`Failed to highlight language "${highlightLang}". Falling back to text.`,
+					error
+				);
 				highlighted = highlighter.codeToHtml(code, {
 					lang: 'text',
 					themes: catppuccinThemes,
@@ -174,6 +177,12 @@ const config = {
 			$types: 'src/lib/types',
 			$content: 'content',
 			$static: 'static'
+		},
+		// Project landing pages live in content/, outside src/; include them so lint and svelte-check cover them
+		typescript: {
+			config: (tsconfig) => {
+				tsconfig.include.push('../content/**/*.svelte');
+			}
 		}
 	},
 	extensions: ['.svelte', '.svx']

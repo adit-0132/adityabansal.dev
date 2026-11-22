@@ -79,7 +79,12 @@ const allSocials: SocialLink[] = [
 	{ url: site.socials.x, label: 'X', icon: IconBrandX, footer: true },
 	{ url: site.socials.bluesky, label: 'Bluesky', icon: IconBrandBluesky, footer: false },
 	{ url: site.socials.instagram, label: 'Instagram', icon: IconBrandInstagram, footer: true },
-	{ url: site.socials.wakatime, label: 'WakaTime', icon: Wakatime as unknown as Icon, footer: false }
+	{
+		url: site.socials.wakatime,
+		label: 'WakaTime',
+		icon: Wakatime as unknown as Icon,
+		footer: false
+	}
 ];
 
 export const Socials = allSocials.filter((s) => !!s.url);

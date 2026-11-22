@@ -11,6 +11,8 @@ export function useLightboxNav(getImages: () => LightboxImage[]) {
 	let hasOpenedFromParam = false;
 
 	function updateParam(id: string | null) {
+		// a throwaway copy to build the new URL, not state, so it doesn't need to be reactive
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
 		const params = new URLSearchParams(page.url.searchParams);
 		if (id) {
 			params.set('photo', id);

@@ -17,10 +17,9 @@ export default defineConfig(({ command }) => {
 			!isBuild && devtoolsJson()
 		].filter(Boolean),
 
-		server: 
-			{
-				fs: { allow: ['.'] },
-				port : 5018 
-			}
+		server: {
+			fs: { allow: ['.'] },
+			port: 5018
+		}
 	};
 });
