@@ -39,15 +39,15 @@
 					{:else}
 						<div class="bg-surface2 mb-4 aspect-video w-full rounded-md"></div>
 					{/if}
-					<div class="flex items-center justify-between gap-3 pe-3">
+					<div class="space-y-1">
 						<h2
-							class="text-text group-hover:text-accent min-w-0 flex-1 truncate text-xl font-semibold"
+							class="text-text group-hover:text-accent text-xl font-semibold"
 							style:view-transition-name="project-title-{project.slug}"
 						>
 							{project.metadata.title}
 						</h2>
-						<p class="text-overlay1 flex-shrink-0 text-xs whitespace-nowrap">
-							{formatDate(project.metadata.date)}
+						<p class="text-overlay1 text-xs">
+							{formatDate(project.metadata.date, { yearMonthOnly: true })}
 						</p>
 					</div>
 					<p class="text-subtext0 line-clamp-3 text-sm">{project.metadata.description}</p>
