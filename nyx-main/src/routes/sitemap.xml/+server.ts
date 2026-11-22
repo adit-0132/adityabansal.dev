@@ -11,6 +11,8 @@ export async function GET() {
 		{ path: '', priority: '1.0', changefreq: 'weekly' },
 		{ path: '/about', priority: '0.8', changefreq: 'monthly' },
 		{ path: '/projects', priority: '0.8', changefreq: 'monthly' },
+		{ path: '/gsoc', priority: '0.7', changefreq: 'monthly' },
+		{ path: '/rconsortium-grant', priority: '0.7', changefreq: 'monthly' },
 		{ path: '/socials', priority: '0.5', changefreq: 'monthly' },
 		{ path: '/pics', priority: '0.6', changefreq: 'monthly' }
 	];
