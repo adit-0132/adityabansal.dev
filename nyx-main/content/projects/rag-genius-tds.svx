@@ -3,12 +3,17 @@ title = "RAG-genius for TDS"
 description = "Production-grade multimodal RAG over IIT Madras TDS course pages and Discourse forums."
 date = "2025-06-01"
 published = true
-featured = true
+featured = false
 tags = ["Python", "FastAPI", "ChromaDB", "OpenAI CLIP", "Playwright", "BeautifulSoup"]
 
 [image]
-url = "/projects/placeholder.svg"
+url = "/projects/rag-genius-tds-media/cover.jpg"
 alt = "RAG-genius for TDS"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/tds-virtual-rag"
+icon = "github"
 ~~~
 
 A production-grade Retrieval-Augmented Generation system built with Python, FastAPI, and OpenAI CLIP for multimodal semantic search over IIT Madras TDS course pages and Discourse forum threads.

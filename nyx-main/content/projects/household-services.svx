@@ -7,8 +7,13 @@ featured = false
 tags = ["Python", "Flask", "SQLite", "Bootstrap", "Jinja"]
 
 [image]
-url = "/projects/placeholder.svg"
+url = "/projects/household-services-media/cover.jpg"
 alt = "Household Services Booking Manager"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/mad1project"
+icon = "github"
 ~~~
 
 A Flask/SQLite household-service platform with role-based access control for Admins, Customers, and Professionals.

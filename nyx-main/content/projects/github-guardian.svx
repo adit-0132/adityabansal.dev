@@ -7,8 +7,13 @@ featured = false
 tags = ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker", "Bandit", "Semgrep"]
 
 [image]
-url = "/projects/placeholder.svg"
+url = "/projects/github-guardian-media/cover.jpg"
 alt = "GitHub Guardian"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/Github-Guardian-Portal"
+icon = "github"
 ~~~
 
 A GitHub App that scans GitHub Actions workflows for CI/CD security risks and reports back through PR checks, review comments, and tracked issues.
