@@ -15,6 +15,8 @@ export interface ProjectMetadata {
 	date: string;
 	published: boolean;
 	featured?: boolean;
+	/** The body is a full landing page with its own hero: skip the generic banner and header. */
+	landing?: boolean;
 	tags?: string[];
 	image?: ProjectImage;
 	links?: ProjectLink[];

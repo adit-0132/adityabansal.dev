@@ -25,7 +25,7 @@ export function getIconByName(name?: string) {
 export type ProjectEntry = ContentEntry<ProjectMetadata>;
 
 const projectService = createContentService<ProjectMetadata>({
-	modules: import.meta.glob('/content/projects/*.svx', { eager: true }),
+	modules: import.meta.glob('/content/projects/*.svx'),
 	contentType: 'project',
 	filter: (p) => p.metadata.published,
 	sort: (a, b) => +new Date(b.metadata.date) - +new Date(a.metadata.date)

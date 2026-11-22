@@ -1,7 +1,7 @@
 <!--
 	Landing page body for /projects/context-porter, rendered by content/projects/context-porter.svx.
-	Everything here is scoped to this page. Global rules are gated on `:has(.cp-page)` because project
-	modules load eagerly, so this component's CSS ships with other pages too; the gate keeps it inert there.
+	Everything here is scoped to this page. Global rules are gated on `:has(.cp-page)` because every
+	project page links this CSS, and it stays loaded after you navigate away; the gate keeps it inert there.
 -->
 <script lang="ts">
 	const STORE_URL = 'https://chromewebstore.google.com/detail/eeijogjkipjihfdkapijankhflinbdlm';
@@ -409,16 +409,6 @@
 		--current-accent-color: #c2330a !important; /* darker orange keeps text contrast on paper */
 	}
 
-	/* Widen the shared project article and swap its generic banner/header for this page's hero. */
-	:global(article.prose:has(.cp-page)) {
-		max-width: 72rem;
-	}
-	:global(article.prose:has(.cp-page) > header),
-	:global(article.prose:has(.cp-page) > hr),
-	:global(article.prose:has(.cp-page) > div:has(> img)) {
-		display: none;
-	}
-
 	/* ── Page ── */
 	.cp-page {
 		--signal: #ff4f1a;
@@ -729,6 +719,8 @@
 	}
 	.wide {
 		display: grid;
+		/* minmax(0, …) lets the code sample scroll instead of widening the page on phones */
+		grid-template-columns: minmax(0, 1fr);
 		gap: 2rem;
 		margin-top: 3rem;
 		align-items: start;
@@ -941,7 +933,7 @@
 			grid-template-columns: repeat(2, 1fr);
 		}
 		.wide {
-			grid-template-columns: 1.25fr 1fr;
+			grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
 		}
 		.privacy {
 			grid-template-columns: 1fr 1.2fr;

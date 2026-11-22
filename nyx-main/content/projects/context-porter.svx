@@ -4,6 +4,7 @@ description = "Chrome extension that moves AI conversations between ChatGPT, Cla
 date = "2026-02-01"
 published = true
 featured = true
+landing = true
 tags = ["JavaScript", "Chrome Extension", "WebRequest API"]
 
 [image]

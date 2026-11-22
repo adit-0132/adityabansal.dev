@@ -1,7 +1,7 @@
 <!--
 	Landing page body for /projects/shelf-studio, rendered by content/projects/shelf-studio.svx.
-	Everything here is scoped to this page. Global rules are gated on `:has(.ss-page)` because project
-	modules load eagerly, so this component's CSS ships with other pages too; the gate keeps it inert there.
+	Everything here is scoped to this page. Global rules are gated on `:has(.ss-page)` because every
+	project page links this CSS, and it stays loaded after you navigate away; the gate keeps it inert there.
 -->
 <script lang="ts">
 	const REPO_URL = 'https://github.com/adit-0132/shelf-studio';
@@ -523,16 +523,6 @@ npm start        # then open http://localhost:4317`;
 		--catppuccin-color-text: #1e231f;
 		--catppuccin-color-green: #385741;
 		--current-accent-color: #385741 !important; /* the app's own green; text-safe on paper */
-	}
-
-	/* Widen the shared project article and swap its generic banner/header for this page's hero. */
-	:global(article.prose:has(.ss-page)) {
-		max-width: 72rem;
-	}
-	:global(article.prose:has(.ss-page) > header),
-	:global(article.prose:has(.ss-page) > hr),
-	:global(article.prose:has(.ss-page) > div:has(> img)) {
-		display: none;
 	}
 
 	/* ── Page ── */

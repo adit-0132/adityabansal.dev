@@ -22,60 +22,63 @@
 	{/if}
 </svelte:head>
 
-<article class="prose mx-auto mb-6 max-w-prose">
-	<!-- Banner Image -->
-	{#if data.metadata.image}
-		<div class="mb-8 rounded-lg md:rounded-xl">
-			<img
-				src={data.metadata.image.url}
-				alt={data.metadata.image.alt}
-				class="aspect-video rounded-lg md:rounded-xl"
-				style:view-transition-name="project-img-{data.slug}"
-			/>
-		</div>
+<!-- A landing page brings its own hero, so it skips the banner and header below and gets more width. -->
+<article class={['prose mx-auto mb-6', data.metadata.landing ? 'max-w-6xl' : 'max-w-prose']}>
+	{#if !data.metadata.landing}
+		<!-- Banner Image -->
+		{#if data.metadata.image}
+			<div class="mb-8 rounded-lg md:rounded-xl">
+				<img
+					src={data.metadata.image.url}
+					alt={data.metadata.image.alt}
+					class="aspect-video rounded-lg md:rounded-xl"
+					style:view-transition-name="project-img-{data.slug}"
+				/>
+			</div>
+		{/if}
+
+		<!-- Header Section -->
+		<header class="mb-8 space-y-4">
+			<h1
+				class="text-3xl font-bold md:text-4xl"
+				style:view-transition-name="project-title-{data.slug}"
+			>
+				{data.metadata.title}
+			</h1>
+
+			<div class="text-subtext0 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+				{#if data.metadata.date}
+					<div class="flex items-center gap-1.5">
+						<IconCalendarEvent size={16} />
+						<span>{formatDate(data.metadata.date, { yearMonthOnly: true })}</span>
+					</div>
+				{/if}
+				{#if data.metadata.links && data.metadata.links.length > 0}
+					{#each data.metadata.links as link (data.slug + link.text)}
+						{@const Icon = getIconByName(
+							link.icon || (link.text.toLowerCase().includes('github') ? 'github' : 'external')
+						)}
+						<a
+							href={link.url}
+							title={link.text}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group hover:text-accent flex items-center gap-1.5 transition-colors"
+						>
+							<Icon size={16} class="transition-transform duration-200 group-hover:scale-120" />
+						</a>
+					{/each}
+				{/if}
+			</div>
+
+			<!-- Tags on a new line -->
+			<div class="text-subtext0 mt-2 flex items-center gap-x-2 text-sm">
+				<ProjectTags project={data} />
+			</div>
+		</header>
+
+		<hr class="border-surface1 mb-8" />
 	{/if}
-
-	<!-- Header Section -->
-	<header class="mb-8 space-y-4">
-		<h1
-			class="text-3xl font-bold md:text-4xl"
-			style:view-transition-name="project-title-{data.slug}"
-		>
-			{data.metadata.title}
-		</h1>
-
-		<div class="text-subtext0 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-			{#if data.metadata.date}
-				<div class="flex items-center gap-1.5">
-					<IconCalendarEvent size={16} />
-					<span>{formatDate(data.metadata.date)}</span>
-				</div>
-			{/if}
-			{#if data.metadata.links && data.metadata.links.length > 0}
-				{#each data.metadata.links as link (data.slug + link.text)}
-					{@const Icon = getIconByName(
-						link.icon || (link.text.toLowerCase().includes('github') ? 'github' : 'external')
-					)}
-					<a
-						href={link.url}
-						title={link.text}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="group hover:text-accent flex items-center gap-1.5 transition-colors"
-					>
-						<Icon size={16} class="transition-transform duration-200 group-hover:scale-120" />
-					</a>
-				{/each}
-			{/if}
-		</div>
-
-		<!-- Tags on a new line -->
-		<div class="text-subtext0 mt-2 flex items-center gap-x-2 text-sm">
-			<ProjectTags project={data} />
-		</div>
-	</header>
-
-	<hr class="border-surface1 mb-8" />
 
 	<Content />
 </article>

@@ -1,7 +1,7 @@
 <!--
 	Landing page body for /projects/rockscreen, rendered by content/projects/rockscreen.svx.
-	Everything here is scoped to this page. Global rules are gated on `:has(.rs-page)` because project
-	modules load eagerly, so this component's CSS ships with other pages too; the gate keeps it inert there.
+	Everything here is scoped to this page. Global rules are gated on `:has(.rs-page)` because every
+	project page links this CSS, and it stays loaded after you navigate away; the gate keeps it inert there.
 -->
 <script lang="ts">
 	const REPO_URL = 'https://github.com/adit-0132/rockscreen';
@@ -373,16 +373,6 @@
 		--current-accent-color: #c621a6 !important; /* text-safe magenta on paper (4.55:1) */
 	}
 
-	/* Widen the shared project article and swap its generic banner/header for this page's hero. */
-	:global(article.prose:has(.rs-page)) {
-		max-width: 72rem;
-	}
-	:global(article.prose:has(.rs-page) > header),
-	:global(article.prose:has(.rs-page) > hr),
-	:global(article.prose:has(.rs-page) > div:has(> img)) {
-		display: none;
-	}
-
 	/* ── Page ── */
 	.rs-page {
 		--neon: #ff2bd6;
@@ -443,6 +433,7 @@
 		gap: 3rem;
 		align-items: center;
 		padding-top: 1rem;
+		overflow-x: clip; /* the phone's glow is wider than a phone screen */
 	}
 	.eyebrow {
 		font-size: 0.85rem;

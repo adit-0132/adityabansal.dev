@@ -35,6 +35,7 @@ Use standard Markdown headings, lists, code fences, and links. Frontmatter field
 - `date` — YYYY-MM-DD; controls sort order on `/projects`
 - `published` — gate visibility (drafts only show in dev)
 - `featured` — surface on the home page
+- `landing` — set to `true` when the body is a full landing-page component with its own hero; the page then skips the generic banner and header (see `rockscreen.svx`)
 - `tags` — chips rendered on the project card
 - `image` — card thumbnail (drop file in `static/projects/`)
 - `links` — repeated table of related links; `icon` accepts `github`, `external`, `docs`, `code`, or `devpost`
