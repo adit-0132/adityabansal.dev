@@ -1,0 +1,30 @@
+~~~
+title = "rdlocal"
+description = "R package that makes R help pages translatable: install a translation module, set your language, and ?function opens in it. My GSoC 2026 work keeps computed help content, like dates and version numbers, live inside translations."
+date = "2026-08-23"
+published = true
+featured = false
+tags = ["R", "Rd", "GSoC 2026"]
+
+[image]
+url = "/projects/rdlocal-media/cover.jpg"
+alt = "rdlocal"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/rdlocal"
+icon = "github"
+
+[[links]]
+text = "Documentation"
+url = "https://adit-0132.github.io/rdlocal/"
+icon = "docs"
+~~~
+
+rdlocal lets anyone ship a small translation module so that an R help page can also appear in another language, with no change from the package's author. It started at the 2023 R Project Sprint, and I extended it during Google Summer of Code 2026 with the R Project, mentored by Heather Turner and Elio Campitelli.
+
+My work covered help pages that generate content while they are built, installed or opened. Each of those dynamic spans becomes a placeholder: translators write around it, and R fills in the current value when you open the page.
+
+The work continues as babelrd, which machine-drafts translations for people to review, funded by an [R Consortium grant](/rconsortium-grant).
+
+[Read the full GSoC write-up](/gsoc)

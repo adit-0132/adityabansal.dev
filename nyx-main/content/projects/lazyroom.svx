@@ -1,0 +1,25 @@
+~~~
+title = "LazyRoom"
+description = "AI-native photo editor for Linux and Windows, built so AI agents can do everything a person can: MCP server, CLI, Python SDK and a Material 3 desktop app on one engine, with 600+ non-destructive operations."
+date = "2026-10-27"
+published = true
+featured = false
+tags = ["Python", "MCP", "PySide6"]
+
+[image]
+url = "/projects/lazyroom-media/cover.jpg"
+alt = "LazyRoom"
+
+[[links]]
+text = "GitHub"
+url = "https://github.com/adit-0132/LazyRoom"
+icon = "github"
+~~~
+
+LazyRoom is a desktop image toolbox for Linux and Windows, designed around one idea: the AI agent is the primary user. Every capability is a documented operation that agents reach through MCP, a headless CLI or a Python SDK. The Material 3 desktop app is one more client of the same engine. Open source (Apache-2.0).
+
+- 600+ operations, including all 520 ImageToolbox filters, ported from the original sources.
+- Non-destructive projects: ordered steps with masks, opacity and blend modes, and undo shared by people and agents.
+- Reference style matching: make photo A look like photo B, as a grade you can still edit.
+- Batch processing, plus utilities like OCR, QR codes, collage, HDR fusion and panoramas.
+- Local-first: originals are never modified, and nothing touches the network unless you opt in.
