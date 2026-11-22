@@ -46,7 +46,8 @@ export const site = {
 		alternateNames: [] as string[],
 		handle: '@adit-0132',
 		url: 'https://adityabansal.dev',
-		description: 'Aditya Bansal — CS student & developer. Building things on the web, the cloud, and the LLM stack.',
+		description:
+			'Aditya Bansal — CS student & developer. Building things on the web, the cloud, and the LLM stack.',
 		jobTitle: 'Software Engineer',
 		tags: [
 			'Aditya Bansal',
@@ -66,7 +67,11 @@ export const site = {
 			location: {
 				city: 'New Delhi',
 				region: 'Delhi',
-				country: 'India'
+				country: 'India',
+				// the home page map and clock
+				latitude: 28.6139,
+				longitude: 77.209,
+				timeZone: 'Asia/Kolkata'
 			},
 			geoRegion: 'IN-DL',
 			knowsAbout: [
@@ -93,13 +98,15 @@ export const site = {
 		heading: 'About Me',
 		avatarUrl: '/images/placeholder-avatar.svg',
 		avatarAlt: 'Aditya Bansal',
-		intro: "Hey, I'm Aditya — a software engineer in the middle of a dual degree (Integrated MTech at JIIT Noida, BS in Data Science at IIT Madras).",
+		intro:
+			"Hey, I'm Aditya — a software engineer in the middle of a dual degree (Integrated MTech at JIIT Noida, BS in Data Science at IIT Madras).",
 		paragraphs: [
 			"Right now I'm a Google Summer of Code 2026 contributor on the R Project, building an R package that section-translates help pages via a utils:::.getHelpFile() shim. Before that I spent time at Logit as an AWS Cloud Intern, putting EC2/S3/IAM stacks into production and tuning costs at rollout.",
-			"I like building things end-to-end — recent work spans a multimodal RAG system for IIT Madras course data, a GitHub App that audits CI/CD workflows for security risks, and a Chrome extension that migrates conversations between ChatGPT and Claude. I'm AWS-certified (Cloud Practitioner + AI Practitioner) and most comfortable in Python, but happy in Java, R, or whatever the job needs.",
-			"Outside of code: cinema enthusiast, survival-gaming fan, and occasionally sporty."
+			"I like building things end-to-end — recent work spans a multimodal RAG system for IIT Madras course data, a GitHub App that audits CI/CD workflows for security risks, and a Chrome extension that migrates conversations between ChatGPT, Claude, Gemini and Grok. I'm AWS-certified (Cloud Practitioner + AI Practitioner) and most comfortable in Python, but happy in Java, R, or whatever the job needs.",
+			'Outside of code: cinema enthusiast, survival-gaming fan, and occasionally sporty.'
 		],
-		hobbiesText: 'Always happy to chat — reach out if you want to talk LLMs, infra, or interesting builds.',
+		hobbiesText:
+			'Always happy to chat — reach out if you want to talk LLMs, infra, or interesting builds.',
 		showEmailButton: true,
 		pet: null as Pet | null
 	},
@@ -147,9 +154,7 @@ export const site = {
 			{ title: 'GSoC', href: '/gsoc' },
 			{ title: 'Pics', href: '/pics' }
 		] as NavItem[],
-		more: [
-			{ title: 'Socials', href: '/socials' }
-		] as NavItem[]
+		more: [{ title: 'Socials', href: '/socials' }] as NavItem[]
 	},
 	brand: {
 		copyrightName: 'Aditya Bansal',

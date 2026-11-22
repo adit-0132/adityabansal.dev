@@ -102,6 +102,3 @@
 .leaflet-popup-pane {
 	z-index: 0 !important;
 }
-.leaflet-control-attribution {
-	display: none !important;
-}

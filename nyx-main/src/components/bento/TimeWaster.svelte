@@ -9,7 +9,7 @@
 	const analyticsEnabled = site.brand.analytics.enabled;
 
 	let globalCount = $state(0);
-	let isLoading = $state(true);
+	let isLoading = $state(analyticsEnabled); // only the global count loads; the local one is ready at once
 	let sparkles = $state<Array<{ id: number; x: number; y: number }>>([]);
 	let buttonScale = $state(1);
 	let counterGlow = $state(false);
@@ -178,8 +178,12 @@
 				: 'invisible opacity-0'} group-hover:visible group-hover:opacity-100"
 		>
 			<p class="mb-2">
-				A real-time global counter tracking every click from everyone visiting this site. Completely
-				pointless, yet oddly satisfying.
+				{#if analyticsEnabled}
+					A real-time global counter tracking every click from everyone visiting this site.
+				{:else}
+					Counts your clicks, saved in this browser.
+				{/if}
+				Completely pointless, yet oddly satisfying.
 			</p>
 			{#if analyticsEnabled}
 				<p class="text-subtext1 text-[10px]">Powered by Abacus</p>

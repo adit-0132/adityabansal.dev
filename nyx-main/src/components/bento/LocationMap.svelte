@@ -2,6 +2,10 @@
 	import { onMount } from 'svelte';
 	import { IconMapPin, IconSun, IconMoon } from '@tabler/icons-svelte';
 	import { browser } from '$app/environment';
+	import { site } from '$lib/config/site';
+
+	const { city, country, latitude, longitude, timeZone } = site.identity.seo.location;
+	const center: [number, number] = [latitude, longitude];
 
 	let mapContainer = $state<HTMLDivElement>();
 	let leafletLoaded = $state(false);
@@ -11,17 +15,17 @@
 
 	function updateTime() {
 		const now = new Date();
-		const torontoTime = new Intl.DateTimeFormat('en-US', {
-			timeZone: 'America/Toronto',
+		const localTime = new Intl.DateTimeFormat('en-US', {
+			timeZone,
 			hour: '2-digit',
 			minute: '2-digit',
 			second: '2-digit',
 			hour12: false
 		}).format(now);
-		currentTime = torontoTime;
+		currentTime = localTime;
 
 		// Check if daytime (6 AM - 9 PM)
-		const hour = parseInt(torontoTime.split(':')[0]);
+		const hour = parseInt(localTime.split(':')[0]);
 		isDaytime = hour >= 6 && hour < 21;
 	}
 
@@ -42,18 +46,20 @@
 
 				mapInstance = L.map(mapContainer, {
 					zoomControl: false,
-					attributionControl: false,
+					attributionControl: false, // added below without the Leaflet prefix
 					dragging: true,
 					scrollWheelZoom: true,
 					doubleClickZoom: true,
 					boxZoom: true,
 					keyboard: true,
 					touchZoom: true
-				}).setView([43.6532, -79.3832], 11);
+				}).setView(center, 11);
+				L.control.attribution({ prefix: false }).addTo(mapInstance);
 
-				L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+				// CARTO's dark tiles now need an API key; OpenStreetMap's don't, and are darkened in CSS below.
+				L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					maxZoom: 19,
-					attribution: '',
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 					keepBuffer: 4,
 					updateWhenIdle: false,
 					updateWhenZooming: false
@@ -71,7 +77,7 @@
 
 	function recenterMap() {
 		if (mapInstance) {
-			mapInstance.setView([43.6532, -79.3832], 11);
+			mapInstance.setView(center, 11);
 		}
 	}
 </script>
@@ -84,9 +90,9 @@
 		<IconMapPin size={16} class="text-accent" />
 		Currently Based In 📍
 	</button>
-	<div class="bg-surface0 relative w-full flex-1 overflow-hidden rounded-lg">
+	<div class="bg-surface0 relative min-h-48 w-full flex-1 overflow-hidden rounded-lg">
 		{#if browser}
-			<div bind:this={mapContainer} class="bg-surface0 h-full w-full"></div>
+			<div bind:this={mapContainer} class="location-map bg-surface0 h-full w-full"></div>
 			{#if !leafletLoaded}
 				<div class="bg-surface0 absolute inset-0 flex items-center justify-center">
 					<span class="text-subtext1 text-xs">Loading map...</span>
@@ -103,7 +109,7 @@
 			onclick={recenterMap}
 			class="text-subtext0 hover:text-accent cursor-pointer text-xs whitespace-nowrap transition-colors"
 		>
-			Toronto, ON
+			{city}, {country}
 		</button>
 		{#if currentTime}
 			<div class="flex items-center gap-1">
@@ -131,5 +137,20 @@
 
 	:global(.leaflet-pane) {
 		background: var(--color-base) !important;
+	}
+
+	/* OpenStreetMap only has light tiles, so turn them dark for the dark palettes */
+	:global(html:not(.latte) .location-map .leaflet-tile-pane) {
+		filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.85) saturate(0.4);
+	}
+
+	:global(.location-map.leaflet-container .leaflet-control-attribution) {
+		background: color-mix(in srgb, var(--color-base) 80%, transparent);
+		color: var(--color-subtext0);
+		font-size: 9px;
+	}
+
+	:global(.location-map.leaflet-container .leaflet-control-attribution a) {
+		color: var(--color-subtext1);
 	}
 </style>
